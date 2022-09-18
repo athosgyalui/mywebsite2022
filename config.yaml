@@ -1,4 +1,4 @@
-baseURL: http://athos-portfolio.netlify.app/
+baseURL: http://kostis-portfolio.netlify.app/
 languageCode: en-us
 title: MyWebstie2022
 theme: forty
@@ -21,7 +21,7 @@ params:
     buttonClear: Clear
     buttonSend: Send message
     email:
-      - email: agaylui.mam2023@london.edu
+      - email: agyalui.mam2023@london.edu
         title: Email
     enable: yes
     phone:
@@ -63,13 +63,13 @@ params:
     button1:
       - name: Get Started
         url: blogs
-    button2:
-      - name: Log In
-        url: '#'
+  #  button2:
+  #    - name: Log In
+  #      url: '#'
     links:
       - name: Home
         url: '#'
-      - name: Blogs
+      - name: About me
         url: blogs
       - name: Generic Blog
         url: blogs/ipsum
@@ -81,17 +81,17 @@ params:
   tiles:
     enable: yes
     showcase:
-      - image: pic01.jpg
+      - image: lbs.jpeg
         subtitle: Ipsum Dolor Sit Amet
-        title: Aliquam
+        title: Project 1
         url: blogs/aliquam
       - image: pic02.jpg
         subtitle: Feugiat Amet Tempus
-        title: Tempus
+        title: Project 1
         url: blogs/tempus
       - image: pic03.jpg
         subtitle: Lorem Etiam Nullam
-        title: Magna
+        title: Project 2
         url: blogs/magna
       - image: pic04.jpg
         subtitle: Nisl Sed Aliquam
