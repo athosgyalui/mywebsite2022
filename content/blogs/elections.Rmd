@@ -33,11 +33,10 @@ library(vroom)
 library(tidyquant)
 ```
 
-# 2016 California Contributors plots
 ```{r trump_margins, echo=FALSE, out.width="100%"}
 knitr::include_graphics("/img/elections.jpeg",error=FALSE)
 ```
-## Top 10 cities for Hillary and Trump
+# Top 10 cities for Hillary and Trump
 
 > The top ten cities in highest amounts raised in political contributions in California during the 2016 US Presidential election.
 

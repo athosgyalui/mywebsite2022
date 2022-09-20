@@ -60,19 +60,19 @@ params:
   image: ''
   name: Athos Gyalui
   navigation:
-    button1:
-      - name: Get in touch
-        url: blogs
+#    button1:
+#      - name: Get in touch
+#        url: blogs
   #  button2:
   #    - name: Log In
   #      url: '#'
     links:
       - name: Home
         url: '#'
-      - name: About me
-        url: blogs
-      - name: Projects
-        url: blogs/ipsum
+      - name: About
+        url: blogs/aboutme
+ #     - name: Projects
+ #       url: blogs/ipsum
   #    - name: Elements
   #      url: elements.html
     menu: Menu
@@ -106,8 +106,8 @@ params:
         title: 2016 Elections
         url: blogs/elections
   two:
-    buttonText: Get Started
+ #   buttonText: Get Started
     enable: yes
     subtitle: "Master's in Analytics and Mangement student passionate about infrastructure, politics and sports."
     title: Summary
-    url: blogs
+#    url: blogs
