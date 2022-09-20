@@ -1,4 +1,4 @@
-baseURL: https://kostis-portfolio.netlify.app/
+baseURL: https://athosgyalui-portfolio.netlify.app/
 languageCode: en-us
 title: MyWebstie2022
 theme: forty
@@ -82,25 +82,25 @@ params:
     enable: yes
     showcase:
       - image: lbs.jpeg
-        subtitle: Ipsum Dolor Sit Amet
+        subtitle: Hobbies and aspirations
+        title: About me
+        url: blogs/aboutme
+      - image: pic1.jpg
+        subtitle: Educational and profesional journey
+        title: Download resume
+        url: blogs/CV_athos_website.pdf
+      - image: pic_finance.jpg
+        subtitle: Financial markets
         title: Risk-return of DJIA stocks
         url: blogs/risk_return
-      - image: pic02.jpg
-        subtitle: Feugiat Amet Tempus
-        title: Project 1
-        url: blogs/tempus
-      - image: pic03.jpg
-        subtitle: Lorem Etiam Nullam
-        title: Project 2
-        url: blogs/magna
-      - image: pic04.jpg
-        subtitle: Nisl Sed Aliquam
-        title: Ipsum
-        url: blogs/ipsum
-      - image: pic05.jpg
-        subtitle: Ipsum Dolor Sit Amet
-        title: Consequat
-        url: blogs/ipsum
+      - image: bike.jpg
+        subtitle: Transportation
+        title: TFL bike sharing
+        url: blogs/bikes
+      - image: music.jpg
+        subtitle: Music
+        title: Spotify musical features
+        url: blogs/spotiffyhtml
       - image: pic06.jpg
         subtitle: Feugiat Amet Tempus
         title: Etiam
@@ -108,11 +108,6 @@ params:
   two:
     buttonText: Get Started
     enable: yes
-    subtitle: "Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero.
-      \n    Mauris aliquet magna magna sed nunc rhoncus pharetra. \n    Pellentesque
-      condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia
-      pellentesque lorem ipsum dolor. \n    Nullam et orci eu lorem consequat tincidunt.
-      Vivamus et sagittis libero.\n    Mauris aliquet magna magna sed nunc rhoncus
-      amet pharetra et feugiat tempus."
-    title: Massa libero
+    subtitle: "Master's in Analytics and Mangement student passionate about infrastructure, politics and sports."
+    title: Summary
     url: blogs

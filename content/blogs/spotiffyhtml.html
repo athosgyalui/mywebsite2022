@@ -1,0 +1,432 @@
+---
+title: "Spotify"
+output: html_document
+slug: spotiffyhtml
+
+---
+
+
+
+<pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 4.1.2</code></pre>
+<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
+## ✔ ggplot2 3.3.6     ✔ purrr   0.3.4
+## ✔ tibble  3.1.8     ✔ dplyr   1.0.9
+## ✔ tidyr   1.2.0     ✔ stringr 1.4.1
+## ✔ readr   2.1.2     ✔ forcats 0.5.2</code></pre>
+<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 4.1.2</code></pre>
+<pre><code>## Warning: package &#39;tibble&#39; was built under R version 4.1.2</code></pre>
+<pre><code>## Warning: package &#39;tidyr&#39; was built under R version 4.1.2</code></pre>
+<pre><code>## Warning: package &#39;readr&#39; was built under R version 4.1.2</code></pre>
+<pre><code>## Warning: package &#39;purrr&#39; was built under R version 4.1.2</code></pre>
+<pre><code>## Warning: package &#39;dplyr&#39; was built under R version 4.1.2</code></pre>
+<pre><code>## Warning: package &#39;stringr&#39; was built under R version 4.1.2</code></pre>
+<pre><code>## Warning: package &#39;forcats&#39; was built under R version 4.1.2</code></pre>
+<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()</code></pre>
+<pre><code>## Warning: package &#39;mosaic&#39; was built under R version 4.1.2</code></pre>
+<pre><code>## Registered S3 method overwritten by &#39;mosaic&#39;:
+##   method                           from   
+##   fortify.SpatialPolygonsDataFrame ggplot2
+## 
+## The &#39;mosaic&#39; package masks several functions from core packages in order to add 
+## additional features.  The original behavior of these functions should not be affected by this.
+## 
+## Attaching package: &#39;mosaic&#39;
+## 
+## The following object is masked from &#39;package:Matrix&#39;:
+## 
+##     mean
+## 
+## The following objects are masked from &#39;package:dplyr&#39;:
+## 
+##     count, do, tally
+## 
+## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     cross
+## 
+## The following object is masked from &#39;package:ggplot2&#39;:
+## 
+##     stat
+## 
+## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     binom.test, cor, cor.test, cov, fivenum, IQR, median, prop.test,
+##     quantile, sd, t.test, var
+## 
+## The following objects are masked from &#39;package:base&#39;:
+## 
+##     max, mean, min, prod, range, sample, sum
+## 
+## 
+## Attaching package: &#39;ggthemes&#39;
+## 
+## The following object is masked from &#39;package:mosaic&#39;:
+## 
+##     theme_map
+## 
+## Registered S3 method overwritten by &#39;GGally&#39;:
+##   method from   
+##   +.gg   ggplot2</code></pre>
+<pre><code>## Warning: package &#39;readxl&#39; was built under R version 4.1.2</code></pre>
+<pre><code>## here() starts at /Users/athosgyalui/Desktop/mywebsite2022</code></pre>
+<pre><code>## Warning: package &#39;skimr&#39; was built under R version 4.1.2</code></pre>
+<pre><code>## 
+## Attaching package: &#39;skimr&#39;
+## 
+## The following object is masked from &#39;package:mosaic&#39;:
+## 
+##     n_missing
+## 
+## 
+## Attaching package: &#39;janitor&#39;
+## 
+## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     chisq.test, fisher.test</code></pre>
+<pre><code>## Warning: package &#39;tidyquant&#39; was built under R version 4.1.2</code></pre>
+<pre><code>## Loading required package: lubridate
+## 
+## Attaching package: &#39;lubridate&#39;
+## 
+## The following objects are masked from &#39;package:base&#39;:
+## 
+##     date, intersect, setdiff, union
+## 
+## Loading required package: PerformanceAnalytics
+## Loading required package: xts
+## Loading required package: zoo</code></pre>
+<pre><code>## Warning: package &#39;zoo&#39; was built under R version 4.1.2</code></pre>
+<pre><code>## 
+## Attaching package: &#39;zoo&#39;
+## 
+## The following objects are masked from &#39;package:base&#39;:
+## 
+##     as.Date, as.Date.numeric
+## 
+## 
+## Attaching package: &#39;xts&#39;
+## 
+## The following objects are masked from &#39;package:dplyr&#39;:
+## 
+##     first, last
+## 
+## 
+## Attaching package: &#39;PerformanceAnalytics&#39;
+## 
+## The following object is masked from &#39;package:graphics&#39;:
+## 
+##     legend
+## 
+## Loading required package: quantmod</code></pre>
+<pre><code>## Warning: package &#39;quantmod&#39; was built under R version 4.1.2</code></pre>
+<pre><code>## Loading required package: TTR
+## Registered S3 method overwritten by &#39;quantmod&#39;:
+##   method            from
+##   as.zoo.data.frame zoo</code></pre>
+<pre><code>## Warning: package &#39;infer&#39; was built under R version 4.1.2</code></pre>
+<pre><code>## 
+## Attaching package: &#39;infer&#39;
+## 
+## The following objects are masked from &#39;package:mosaic&#39;:
+## 
+##     prop_test, t_test</code></pre>
+<pre><code>## Warning: package &#39;openintro&#39; was built under R version 4.1.2</code></pre>
+<pre><code>## Loading required package: airports
+## Loading required package: cherryblossom
+## Loading required package: usdata
+## 
+## Attaching package: &#39;openintro&#39;
+## 
+## The following object is masked from &#39;package:mosaic&#39;:
+## 
+##     dotPlot
+## 
+## The following objects are masked from &#39;package:lattice&#39;:
+## 
+##     ethanol, lsegments</code></pre>
+<div id="spotify" class="section level1">
+<h1>Spotify</h1>
+<p>The dataset was downloaded from the link below and contains a sample of over 32K songs</p>
+<pre class="r"><code>spotify_songs &lt;- readr::read_csv(&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-01-21/spotify_songs.csv&#39;)</code></pre>
+<pre><code>## Rows: 32833 Columns: 23
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (10): track_id, track_name, track_artist, track_album_id, track_album_na...
+## dbl (13): track_popularity, danceability, energy, key, loudness, mode, speec...
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<p>The data dictionary can be found below</p>
+<table>
+<colgroup>
+<col width="26%" />
+<col width="26%" />
+<col width="47%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th><strong>variable</strong></th>
+<th><strong>class</strong></th>
+<th><strong>description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>track_id</td>
+<td>character</td>
+<td>Song unique ID</td>
+</tr>
+<tr class="even">
+<td>track_name</td>
+<td>character</td>
+<td>Song Name</td>
+</tr>
+<tr class="odd">
+<td>track_artist</td>
+<td>character</td>
+<td>Song Artist</td>
+</tr>
+<tr class="even">
+<td>track_popularity</td>
+<td>double</td>
+<td>Song Popularity (0-100) where higher is better</td>
+</tr>
+<tr class="odd">
+<td>track_album_id</td>
+<td>character</td>
+<td>Album unique ID</td>
+</tr>
+<tr class="even">
+<td>track_album_name</td>
+<td>character</td>
+<td>Song album name</td>
+</tr>
+<tr class="odd">
+<td>track_album_release_date</td>
+<td>character</td>
+<td>Date when album released</td>
+</tr>
+<tr class="even">
+<td>playlist_name</td>
+<td>character</td>
+<td>Name of playlist</td>
+</tr>
+<tr class="odd">
+<td>playlist_id</td>
+<td>character</td>
+<td>Playlist ID</td>
+</tr>
+<tr class="even">
+<td>playlist_genre</td>
+<td>character</td>
+<td>Playlist genre</td>
+</tr>
+<tr class="odd">
+<td>playlist_subgenre</td>
+<td>character</td>
+<td>Playlist subgenre</td>
+</tr>
+<tr class="even">
+<td>danceability</td>
+<td>double</td>
+<td>Danceability describes how suitable a track is for dancing based on a combination of musical elements including tempo, rhythm stability, beat strength, and overall regularity. A value of 0.0 is least danceable and 1.0 is most danceable.</td>
+</tr>
+<tr class="odd">
+<td>energy</td>
+<td>double</td>
+<td>Energy is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and activity. Typically, energetic tracks feel fast, loud, and noisy. For example, death metal has high energy, while a Bach prelude scores low on the scale. Perceptual features contributing to this attribute include dynamic range, perceived loudness, timbre, onset rate, and general entropy.</td>
+</tr>
+<tr class="even">
+<td>key</td>
+<td>double</td>
+<td>The estimated overall key of the track. Integers map to pitches using standard Pitch Class notation . E.g. 0 = C, 1 = C♯/D♭, 2 = D, and so on. If no key was detected, the value is -1.</td>
+</tr>
+<tr class="odd">
+<td>loudness</td>
+<td>double</td>
+<td>The overall loudness of a track in decibels (dB). Loudness values are averaged across the entire track and are useful for comparing relative loudness of tracks. Loudness is the quality of a sound that is the primary psychological correlate of physical strength (amplitude). Values typical range between -60 and 0 db.</td>
+</tr>
+<tr class="even">
+<td>mode</td>
+<td>double</td>
+<td>Mode indicates the modality (major or minor) of a track, the type of scale from which its melodic content is derived. Major is represented by 1 and minor is 0.</td>
+</tr>
+<tr class="odd">
+<td>speechiness</td>
+<td>double</td>
+<td>Speechiness detects the presence of spoken words in a track. The more exclusively speech-like the recording (e.g. talk show, audio book, poetry), the closer to 1.0 the attribute value. Values above 0.66 describe tracks that are probably made entirely of spoken words. Values between 0.33 and 0.66 describe tracks that may contain both music and speech, either in sections or layered, including such cases as rap music. Values below 0.33 most likely represent music and other non-speech-like tracks.</td>
+</tr>
+<tr class="even">
+<td>acousticness</td>
+<td>double</td>
+<td>A confidence measure from 0.0 to 1.0 of whether the track is acoustic. 1.0 represents high confidence the track is acoustic.</td>
+</tr>
+<tr class="odd">
+<td>instrumentalness</td>
+<td>double</td>
+<td>Predicts whether a track contains no vocals. “Ooh” and “aah” sounds are treated as instrumental in this context. Rap or spoken word tracks are clearly “vocal”. The closer the instrumentalness value is to 1.0, the greater likelihood the track contains no vocal content. Values above 0.5 are intended to represent instrumental tracks, but confidence is higher as the value approaches 1.0.</td>
+</tr>
+<tr class="even">
+<td>liveness</td>
+<td>double</td>
+<td>Detects the presence of an audience in the recording. Higher liveness values represent an increased probability that the track was performed live. A value above 0.8 provides strong likelihood that the track is live.</td>
+</tr>
+<tr class="odd">
+<td>valence</td>
+<td>double</td>
+<td>A measure from 0.0 to 1.0 describing the musical positiveness conveyed by a track. Tracks with high valence sound more positive (e.g. happy, cheerful, euphoric), while tracks with low valence sound more negative (e.g. sad, depressed, angry).</td>
+</tr>
+<tr class="even">
+<td>tempo</td>
+<td>double</td>
+<td>The overall estimated tempo of a track in beats per minute (BPM). In musical terminology, tempo is the speed or pace of a given piece and derives directly from the average beat duration.</td>
+</tr>
+<tr class="odd">
+<td>duration_ms</td>
+<td>double</td>
+<td>Duration of song in milliseconds</td>
+</tr>
+</tbody>
+</table>
+<div id="popularity-normal-distribution" class="section level2">
+<h2>Popularity normal distribution</h2>
+<pre class="r"><code>ggplot(spotify_songs)+aes(x=track_popularity)+geom_histogram(binwidth=5)+
+   labs(title = &quot;Track popularity&quot;, 
+        x = &quot;Track popularity&quot;, 
+        y = &quot;Count&quot;)</code></pre>
+<p><img src="/blogs/spotiffyhtml_files/figure-html/spotify_pop_distr-1.png" width="672" /></p>
+<pre class="r"><code>spotify_songs_no0&lt;-filter(spotify_songs,track_popularity&gt;0)
+ggplot(spotify_songs_no0)+aes(x=track_popularity)+geom_histogram(binwidth=5)+
+   labs(title = &quot;Track popularity adjusted for songs not listened to&quot;, 
+        x = &quot;Track popularity&quot;, 
+        y = &quot;Count&quot;)</code></pre>
+<p><img src="/blogs/spotiffyhtml_files/figure-html/spotify_pop_distr-2.png" width="672" /></p>
+<blockquote>
+<p>The distribution appears close to normal for track_popularity between 20 to 100. However, a spike can be observed for songs with little to no popularity. A significant percentage of the 32000 songs have 0 popularity. The second graph generated excludes those songs from the dataset. The normal distribution can be observed with more ease.</p>
+</blockquote>
+</div>
+<div id="distribution-of-the-12-audio-features" class="section level2">
+<h2>Distribution of the 12 audio features</h2>
+<blockquote>
+<p>The audio features vary in terms of distributions. Most, such as acousticness below are skewed.</p>
+</blockquote>
+<pre class="r"><code>ggplot(spotify_songs)+aes(x=acousticness)+geom_histogram(binwidth=0.05)+
+  labs(title = &quot;Audio feature: Acousticness&quot;, 
+       x = &quot;Acousticness&quot;, 
+       y = &quot;Count&quot;)</code></pre>
+<p><img src="/blogs/spotiffyhtml_files/figure-html/audio_12_acousticness-1.png" width="672" />
+The Acousticness is skewed right.</p>
+<pre class="r"><code>summary(spotify_songs)</code></pre>
+<pre><code>##    track_id          track_name        track_artist       track_popularity
+##  Length:32833       Length:32833       Length:32833       Min.   :  0.00  
+##  Class :character   Class :character   Class :character   1st Qu.: 24.00  
+##  Mode  :character   Mode  :character   Mode  :character   Median : 45.00  
+##                                                           Mean   : 42.48  
+##                                                           3rd Qu.: 62.00  
+##                                                           Max.   :100.00  
+##  track_album_id     track_album_name   track_album_release_date
+##  Length:32833       Length:32833       Length:32833            
+##  Class :character   Class :character   Class :character        
+##  Mode  :character   Mode  :character   Mode  :character        
+##                                                                
+##                                                                
+##                                                                
+##  playlist_name      playlist_id        playlist_genre     playlist_subgenre 
+##  Length:32833       Length:32833       Length:32833       Length:32833      
+##  Class :character   Class :character   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+##                                                                             
+##                                                                             
+##                                                                             
+##   danceability        energy              key            loudness      
+##  Min.   :0.0000   Min.   :0.000175   Min.   : 0.000   Min.   :-46.448  
+##  1st Qu.:0.5630   1st Qu.:0.581000   1st Qu.: 2.000   1st Qu.: -8.171  
+##  Median :0.6720   Median :0.721000   Median : 6.000   Median : -6.166  
+##  Mean   :0.6548   Mean   :0.698619   Mean   : 5.374   Mean   : -6.720  
+##  3rd Qu.:0.7610   3rd Qu.:0.840000   3rd Qu.: 9.000   3rd Qu.: -4.645  
+##  Max.   :0.9830   Max.   :1.000000   Max.   :11.000   Max.   :  1.275  
+##       mode         speechiness      acousticness    instrumentalness   
+##  Min.   :0.0000   Min.   :0.0000   Min.   :0.0000   Min.   :0.0000000  
+##  1st Qu.:0.0000   1st Qu.:0.0410   1st Qu.:0.0151   1st Qu.:0.0000000  
+##  Median :1.0000   Median :0.0625   Median :0.0804   Median :0.0000161  
+##  Mean   :0.5657   Mean   :0.1071   Mean   :0.1753   Mean   :0.0847472  
+##  3rd Qu.:1.0000   3rd Qu.:0.1320   3rd Qu.:0.2550   3rd Qu.:0.0048300  
+##  Max.   :1.0000   Max.   :0.9180   Max.   :0.9940   Max.   :0.9940000  
+##     liveness         valence           tempo         duration_ms    
+##  Min.   :0.0000   Min.   :0.0000   Min.   :  0.00   Min.   :  4000  
+##  1st Qu.:0.0927   1st Qu.:0.3310   1st Qu.: 99.96   1st Qu.:187819  
+##  Median :0.1270   Median :0.5120   Median :121.98   Median :216000  
+##  Mean   :0.1902   Mean   :0.5106   Mean   :120.88   Mean   :225800  
+##  3rd Qu.:0.2480   3rd Qu.:0.6930   3rd Qu.:133.92   3rd Qu.:253585  
+##  Max.   :0.9960   Max.   :0.9910   Max.   :239.44   Max.   :517810</code></pre>
+<pre class="r"><code>ggplot(spotify_songs)+aes(x=valence)+geom_histogram() +
+  labs(title = &quot;Audio feature: Valence&quot;, 
+       x = &quot;Valence&quot;, 
+       y = &quot;Count&quot;)</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="/blogs/spotiffyhtml_files/figure-html/audio_12_valence-1.png" width="672" />
+The distribution of <code>Valence</code> is the closest to normal.</p>
+<pre class="r"><code>ggplot(spotify_songs)+aes(x=tempo)+geom_histogram() +
+   labs(title = &quot;Audio feature: Tempo&quot;, 
+        x = &quot;Tempo&quot;, 
+        y = &quot;Count&quot;)</code></pre>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="/blogs/spotiffyhtml_files/figure-html/audio_12_tempo-1.png" width="672" />
+Summary data suggests <code>Tempo</code> is also close to normal but fails to pick up the double peaked shape.</p>
+<blockquote>
+<p>From the summary, we can try determining which of the features are closest to normal. A ‘perfect’ normal distribution has equal mean and median, the lower and upper interquartile range should have equal distance to the median. Likewise, the distance from the min value to the mean distance should equal the mean to the max value distance. The feature closest to these properties is the valence. As shown on the graph, it follows a normal-type distriution. Conversely, from reading the tempo summary statistics, we would expect to see a curve that closely resembles a normal distriution. However, Tempo has a primary and secondary peak, one on each side of the median. The summary statistics cannot show such phenomena. They therefore can be used as an approimation of the overall distribution but should not be used as the sole estimating method.</p>
+</blockquote>
+</div>
+<div id="track-popularity-relationship" class="section level2">
+<h2>Track popularity relationship</h2>
+<pre class="r"><code>ggplot(spotify_songs)+aes(x=valence, y=track_popularity)+geom_point()+
+   labs(title = &quot;Correlation between valence and track popularity&quot;, 
+        x = &quot;Valence&quot;, 
+        y = &quot;Track popularity&quot;)</code></pre>
+<p><img src="/blogs/spotiffyhtml_files/figure-html/valence_relationship-1.png" width="672" />
+There does not appear to be a relationship between valence and track_popularity.</p>
+<pre class="r"><code>ggplot(spotify_songs)+aes(x=danceability, y=track_popularity)+geom_point()+
+   labs(title = &quot;Correlation between danceability and track popularity&quot;, 
+        x = &quot;Danceability&quot;, 
+        y = &quot;Track popularity&quot;)</code></pre>
+<p><img src="/blogs/spotiffyhtml_files/figure-html/danceability_relationship-1.png" width="672" /></p>
+<p>Very few songs have danceability under 0.25. There appears to be a very weak positive correlation between track_popularity and danceability. The most popular songs have danceability between 0.5 and 0.8. However, it is also the danceability level of most songs, many of which are not popular. Contrary to our initial assumption that they would be heavily correlated, this is not the case.</p>
+</div>
+<div id="major-and-minor-modality" class="section level2">
+<h2>Major and minor modality</h2>
+<pre class="r"><code>filter(spotify_songs,mode==1)%&gt;%
+summarise(mean(danceability),mean(track_popularity))</code></pre>
+<pre><code>## # A tibble: 1 × 2
+##   `mean(danceability)` `mean(track_popularity)`
+##                  &lt;dbl&gt;                    &lt;dbl&gt;
+## 1                0.647                     42.7</code></pre>
+<pre class="r"><code>filter(spotify_songs,mode==0)%&gt;%
+summarise(mean(danceability),mean(track_popularity))</code></pre>
+<pre><code>## # A tibble: 1 × 2
+##   `mean(danceability)` `mean(track_popularity)`
+##                  &lt;dbl&gt;                    &lt;dbl&gt;
+## 1                0.665                     42.2</code></pre>
+<pre class="r"><code># distribution of danceability and popularity of each mode
+library(patchwork)</code></pre>
+<pre><code>## Warning: package &#39;patchwork&#39; was built under R version 4.1.2</code></pre>
+<pre class="r"><code>p1 &lt;- ggplot(data = spotify_songs) + 
+  aes(x = danceability, color = factor(mode)) + 
+  geom_density() + 
+  labs(
+    x = &quot;Danceability&quot;, 
+    y = &quot;Density&quot;
+  )
+p2 &lt;- ggplot(data = spotify_songs) + 
+  aes(x = track_popularity, color = factor(mode)) + 
+  geom_density() + 
+  labs(
+    x = &quot;Track Popularity&quot;, 
+    y = &quot;Density&quot;
+  )
+p1 + p2</code></pre>
+<p><img src="/blogs/spotiffyhtml_files/figure-html/modality_major_minor-1.png" width="672" /></p>
+<p>Songs in minor modality are slightly more danceable than major ones and seem to have roughly equal popularity.</p>
+</div>
+</div>
