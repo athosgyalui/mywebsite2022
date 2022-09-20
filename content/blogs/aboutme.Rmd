@@ -1,6 +1,8 @@
 ---
 title: "About Me"
 slug: aboutme
+
+image: lbs.jpeg
 ---
 
 ```{r setup, include=FALSE}
@@ -8,9 +10,17 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
-Hi, I am Athos. I was born in France but am half Argentinian and half Armenian. I completed my undergraduate degree in Civil Engineering and now study Analytics and Management at London Business School. My only coding experience has been on MATLAB but I am starting to familiarise myself with R. Some of my work completed in the past weeks is available on this website, along with my CV and contact details. 
+## Personal life
+Hi, I am Athos. I was born in France but am half Argentinian and half Armenian. I have been living in the UK for the past 6 years and plan on finding a job here. 
 
+## Academics
+I completed my undergraduate degree in **Civil Engineering** at *Imperial College London*. However, as my ambition is to have a leading role in a company, I want to strengthen my knowledge of business management. I have a particular interest in the use of data to help businesses strive, which is why I am now completing a **Masters in Analytics and Management**. I study at *London Business School* and will complete my programme in 2023.
+```{r trump_margins, echo=FALSE, out.width="100%"}
+knitr::include_graphics("/img/lbs.jpeg",error=FALSE)
+```
 
+## Interests
+Aside from studies, I have a passion for travelling. I therefore try to go as far as I can when given the opportunity so that I can learn about new cultures. I am also a big boxing fan, which I also practice regularly.
 
 
 
