@@ -81,7 +81,7 @@ params:
   tiles:
     enable: yes
     showcase:
-      - image: lbs.jpeg
+      - image: life.jpg
         subtitle: Hobbies and aspirations
         title: About me
         url: blogs/aboutme

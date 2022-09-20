@@ -1,5 +1,5 @@
 ---
-title: "bikes"
+title: "Bikes"
 author: "Study group and members' names go here"
 date: "`r Sys.Date()`"
 output:
@@ -34,9 +34,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r trump_margins, echo=FALSE, out.width="100%"}
-knitr::include_graphics("/img/bike2.jpeg",error=FALSE)
-```
+
 
 ```{r load-libraries, include=FALSE}
 library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
@@ -57,6 +55,10 @@ library(infer)
 ```
 
 # Challenge 1: Excess rentals in TfL bike sharing
+
+```{r trump_margins, echo=FALSE, out.width="100%"}
+knitr::include_graphics("/img/bike2.jpg",error=FALSE)
+```
 
 Data: TfL data on how many bikes were hired every single day, from *London Data Store*
 
