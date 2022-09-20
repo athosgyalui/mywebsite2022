@@ -102,9 +102,9 @@ params:
         title: Spotify musical features
         url: blogs/spotiffyhtml
       - image: pic06.jpg
-        subtitle: Feugiat Amet Tempus
-        title: Etiam
-        url: blogs/ipsum
+        subtitle: Politics
+        title: 2016 Elections
+        url: blogs/elections
   two:
     buttonText: Get Started
     enable: yes

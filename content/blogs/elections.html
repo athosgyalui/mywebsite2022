@@ -1,0 +1,112 @@
+---
+title: "2016 California Contributors plots"
+slug: elections
+image: elections.jpeg
+
+---
+
+
+
+<div id="california-contributors-plots" class="section level1">
+<h1>2016 California Contributors plots</h1>
+<p><img src="../../../../../../img/elections.jpeg" width="100%" style="display: block; margin: auto;" />
+## Top 10 cities for Hillary and Trump</p>
+<blockquote>
+<p>The top ten cities in highest amounts raised in political contributions in California during the 2016 US Presidential election.</p>
+</blockquote>
+<pre class="r"><code>library(patchwork)
+library(tidytext)</code></pre>
+<pre class="r"><code>CA_contributors_2016 &lt;- vroom::vroom(here::here(&quot;data&quot;,&quot;CA_contributors_2016.csv&quot;))
+glimpse(CA_contributors_2016)</code></pre>
+<pre><code>## Rows: 1,292,843
+## Columns: 4
+## $ cand_nm           &lt;chr&gt; &quot;Clinton, Hillary Rodham&quot;, &quot;Clinton, Hillary Rodham&quot;…
+## $ contb_receipt_amt &lt;dbl&gt; 50.0, 200.0, 5.0, 48.3, 40.0, 244.3, 35.0, 100.0, 25…
+## $ zip               &lt;dbl&gt; 94939, 93428, 92337, 95334, 93011, 95826, 90278, 902…
+## $ contb_date        &lt;date&gt; 2016-04-26, 2016-04-20, 2016-04-02, 2016-11-21, 201…</code></pre>
+<pre class="r"><code>zipcodes &lt;- vroom::vroom(here::here(&quot;data&quot;,&quot;zip_code_database.csv&quot;))
+zipcodes &lt;- mutate(zipcodes, zip = as.double(zip))
+contributors &lt;- left_join(CA_contributors_2016, zipcodes, by = &quot;zip&quot;)
+hillary &lt;- contributors %&gt;%
+  filter(cand_nm == &quot;Clinton, Hillary Rodham&quot;) %&gt;%
+  group_by(primary_city) %&gt;%
+  summarize(contb_receipt_amt = sum(contb_receipt_amt)) %&gt;%
+  slice_max(order_by = contb_receipt_amt, n = 10) %&gt;%
+  mutate(city = fct_reorder(primary_city, contb_receipt_amt, max))
+#hillary
+p1 &lt;- ggplot(hillary, aes(contb_receipt_amt, city)) +
+  geom_col(fill = &quot;blue&quot;) + 
+  labs(title = &quot;Clinton, Hillary Rodham&quot;,
+   x = NULL,
+   y = NULL) + 
+  theme_bw() + 
+  scale_x_continuous(labels = scales::dollar_format()) +
+  theme(text = element_text(size = 9),element_line(size =1))
+
+#p1
+
+trump &lt;- contributors %&gt;%
+  filter(cand_nm == &quot;Trump, Donald J.&quot;) %&gt;%
+  group_by(primary_city) %&gt;%
+  summarize(contb_receipt_amt = sum(contb_receipt_amt)) %&gt;%
+  slice_max(order_by = contb_receipt_amt, n = 10) %&gt;%
+  mutate(city = fct_reorder(primary_city, contb_receipt_amt, max))
+#trump
+p2 &lt;- ggplot(trump, aes(contb_receipt_amt, city)) +
+  geom_col(fill = &quot;red&quot;) + 
+  labs(title = &quot;Trump, Donald J.&quot;,
+   x = NULL,
+   y = NULL) + 
+  theme_bw() + 
+  scale_x_continuous(labels = scales::dollar_format())  +
+  theme(text = element_text(size = 9),element_line(size =1))
+#p2
+
+p1 + p2 + plot_annotation(
+  title = &quot;Where did candidates raise most money?&quot;
+)</code></pre>
+<p><img src="/blogs/elections_files/figure-html/challenge_2-1.png" width="648" style="display: block; margin: auto;" /></p>
+<blockquote>
+<p>The above graph shows from which cities the republican candidate, Donald Trump, and the democratic candidate, Hillary Clinton, received most campaign donations. This information points to the fact that San Francisco, which donated most to Hillary Clinton, would have a large democratic support base, whereas San Diego, one of Donald Trump’s biggest donors, would have a significant republican support base. What is interesting in this graph is that Los Angeles significantly contributed to both campaigns. However, we do not know what the voting preferences of the rest of the community are, so we would have to see other data to fully understand the voter preferences of these cities.</p>
+</blockquote>
+<div id="top-10-cities-for-the-top-10-candidates" class="section level2">
+<h2>Top 10 cities for the top 10 candidates</h2>
+<pre class="r"><code>#CA_contributors_2016
+zipcodes &lt;- vroom::vroom(here::here(&quot;data&quot;,&quot;zip_code_database.csv&quot;))
+zipcodes &lt;- mutate(zipcodes, zip = as.double(zip))
+contributors &lt;- left_join(CA_contributors_2016, zipcodes, by = &quot;zip&quot;)
+#contributors
+
+top_ten &lt;- contributors %&gt;%
+  group_by(cand_nm) %&gt;%
+  summarise(total_price = sum(contb_receipt_amt)) %&gt;%
+  slice_max(order_by = total_price, n=10)
+#top_ten
+
+library(tidytext)
+
+contributors %&gt;%
+  filter(cand_nm %in% top_ten$cand_nm) %&gt;%
+  group_by(cand_nm, primary_city) %&gt;%
+  summarize(contb_receipt_amt = sum(contb_receipt_amt)) %&gt;%
+  arrange(cand_nm, desc(contb_receipt_amt)) %&gt;%
+  top_n(10, contb_receipt_amt) %&gt;%
+  mutate(primary_city = reorder_within(primary_city, contb_receipt_amt, cand_nm)) %&gt;%
+  ggplot(aes(contb_receipt_amt, primary_city)) +
+  geom_col() + 
+  facet_wrap(vars(factor(cand_nm)), scales = &quot;free&quot;, nrow = 5) +
+  labs(
+    title = &quot;Where did the top 10 candidates raise most money?&quot;,
+    x = NULL,
+    y = NULL, 
+    
+  ) + 
+  scale_y_reordered() + 
+  scale_x_continuous(labels = scales::dollar) + 
+  theme(text = element_text(size = 6))</code></pre>
+<p><img src="/blogs/elections_files/figure-html/challenge_2_2-1.png" width="648" style="display: block; margin: auto;" /></p>
+<blockquote>
+<p>As we can see above, Los Angeles was in the top 2 cities in terms of contribution to every single candidate. This shows that voting preferences in this city are quite diverse. It is also partially explained by the fact that it is the second biggest city in the US, with the second biggest GDP, so every candidate can get significant support within such a big population.</p>
+</blockquote>
+</div>
+</div>

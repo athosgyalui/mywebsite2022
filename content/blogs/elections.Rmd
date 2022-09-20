@@ -1,0 +1,136 @@
+---
+title: "2016 California Contributors plots"
+slug: elections
+image: elections.jpeg
+
+---
+
+```{r, setup, echo=FALSE}
+knitr::opts_chunk$set(
+  message = FALSE, 
+  warning = FALSE, 
+  tidy=FALSE,     # display code as typed
+  size="small")   # slightly smaller font for code
+options(digits = 3)
+
+# default figure size
+knitr::opts_chunk$set(
+  fig.width=6.75, 
+  fig.height=6.75,
+  fig.align = "center"
+)
+```
+
+```{r load-libraries, warning=FALSE, message=FALSE, echo=FALSE}
+library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
+library(mosaic)
+library(ggthemes)
+library(lubridate)
+library(here)
+library(skimr)
+library(janitor)
+library(vroom)
+library(tidyquant)
+```
+
+# 2016 California Contributors plots
+```{r trump_margins, echo=FALSE, out.width="100%"}
+knitr::include_graphics("/img/elections.jpeg",error=FALSE)
+```
+## Top 10 cities for Hillary and Trump
+
+> The top ten cities in highest amounts raised in political contributions in California during the 2016 US Presidential election.
+
+```{r load_pkg}
+library(patchwork)
+library(tidytext)
+```
+
+```{r challenge_2, message=FALSE, warnings=FALSE}
+
+CA_contributors_2016 <- vroom::vroom(here::here("data","CA_contributors_2016.csv"))
+glimpse(CA_contributors_2016)
+zipcodes <- vroom::vroom(here::here("data","zip_code_database.csv"))
+zipcodes <- mutate(zipcodes, zip = as.double(zip))
+contributors <- left_join(CA_contributors_2016, zipcodes, by = "zip")
+hillary <- contributors %>%
+  filter(cand_nm == "Clinton, Hillary Rodham") %>%
+  group_by(primary_city) %>%
+  summarize(contb_receipt_amt = sum(contb_receipt_amt)) %>%
+  slice_max(order_by = contb_receipt_amt, n = 10) %>%
+  mutate(city = fct_reorder(primary_city, contb_receipt_amt, max))
+#hillary
+p1 <- ggplot(hillary, aes(contb_receipt_amt, city)) +
+  geom_col(fill = "blue") + 
+  labs(title = "Clinton, Hillary Rodham",
+   x = NULL,
+   y = NULL) + 
+  theme_bw() + 
+  scale_x_continuous(labels = scales::dollar_format()) +
+  theme(text = element_text(size = 9),element_line(size =1))
+
+#p1
+
+trump <- contributors %>%
+  filter(cand_nm == "Trump, Donald J.") %>%
+  group_by(primary_city) %>%
+  summarize(contb_receipt_amt = sum(contb_receipt_amt)) %>%
+  slice_max(order_by = contb_receipt_amt, n = 10) %>%
+  mutate(city = fct_reorder(primary_city, contb_receipt_amt, max))
+#trump
+p2 <- ggplot(trump, aes(contb_receipt_amt, city)) +
+  geom_col(fill = "red") + 
+  labs(title = "Trump, Donald J.",
+   x = NULL,
+   y = NULL) + 
+  theme_bw() + 
+  scale_x_continuous(labels = scales::dollar_format())  +
+  theme(text = element_text(size = 9),element_line(size =1))
+#p2
+
+p1 + p2 + plot_annotation(
+  title = "Where did candidates raise most money?"
+)
+```
+
+> The above graph shows from which cities the republican candidate, Donald Trump, and the democratic candidate, Hillary Clinton, received most campaign donations. This information points to the fact that San Francisco, which donated most to Hillary Clinton, would have a large democratic support base, whereas San Diego, one of Donald Trump's biggest donors, would have a significant republican support base. What is interesting in this graph is that Los Angeles significantly contributed to both campaigns. However, we do not know what the voting preferences of the rest of the community are, so we would have to see other data to fully understand the voter preferences of these cities.
+
+## Top 10 cities for the top 10 candidates
+
+```{r challenge_2_2}
+#CA_contributors_2016
+zipcodes <- vroom::vroom(here::here("data","zip_code_database.csv"))
+zipcodes <- mutate(zipcodes, zip = as.double(zip))
+contributors <- left_join(CA_contributors_2016, zipcodes, by = "zip")
+#contributors
+
+top_ten <- contributors %>%
+  group_by(cand_nm) %>%
+  summarise(total_price = sum(contb_receipt_amt)) %>%
+  slice_max(order_by = total_price, n=10)
+#top_ten
+
+library(tidytext)
+
+contributors %>%
+  filter(cand_nm %in% top_ten$cand_nm) %>%
+  group_by(cand_nm, primary_city) %>%
+  summarize(contb_receipt_amt = sum(contb_receipt_amt)) %>%
+  arrange(cand_nm, desc(contb_receipt_amt)) %>%
+  top_n(10, contb_receipt_amt) %>%
+  mutate(primary_city = reorder_within(primary_city, contb_receipt_amt, cand_nm)) %>%
+  ggplot(aes(contb_receipt_amt, primary_city)) +
+  geom_col() + 
+  facet_wrap(vars(factor(cand_nm)), scales = "free", nrow = 5) +
+  labs(
+    title = "Where did the top 10 candidates raise most money?",
+    x = NULL,
+    y = NULL, 
+    
+  ) + 
+  scale_y_reordered() + 
+  scale_x_continuous(labels = scales::dollar) + 
+  theme(text = element_text(size = 6))
+```
+
+> As we can see above, Los Angeles was in the top 2 cities in terms of contribution to every single candidate. This shows that voting preferences in this city are quite diverse. It is also partially explained by the fact that it is the second biggest city in the US, with the second biggest GDP, so every candidate can get significant support within such a big population.

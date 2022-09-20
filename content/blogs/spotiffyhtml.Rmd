@@ -1,9 +1,9 @@
 ---
-title: "Spotify"
+title: Spotify
 output: html_document
 slug: spotiffyhtml
-
-image: music_notes.jpg
+draft: false
+image: music_notes.jpeg
 
 ---
 
@@ -11,7 +11,7 @@ image: music_notes.jpg
 
 # Spotify
 ```{r trump_margins, echo=FALSE, out.width="100%"}
-knitr::include_graphics("/img/music_notes.jpg",error=FALSE)
+knitr::include_graphics("/img/music_notes.jpeg",error=FALSE)
 ```
 
 The dataset was downloaded from the link below and contains a sample of over 32K songs

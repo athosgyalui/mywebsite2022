@@ -15,7 +15,7 @@ editor_options:
     wrap: 72
 slug: bikes
 
-image: bike2.jpg
+image: bike2.jpeg
 ---
 
 ```{r, setup, include=FALSE}
@@ -57,7 +57,7 @@ library(infer)
 # Challenge 1: Excess rentals in TfL bike sharing
 
 ```{r trump_margins, echo=FALSE, out.width="100%"}
-knitr::include_graphics("/img/bike2.jpg",error=FALSE)
+knitr::include_graphics("/img/bike2.jpeg",error=FALSE)
 ```
 
 Data: TfL data on how many bikes were hired every single day, from *London Data Store*
